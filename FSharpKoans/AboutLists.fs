@@ -21,9 +21,9 @@ module ``about lists`` =
         //Note: The list data type in F# is a singly linked list, 
         //      so indexing elements is O(n). 
         
-        AssertEquality list.Head __
-        AssertEquality list.Tail __
-        AssertEquality list.Length __
+        AssertEquality list.Head "apple"
+        AssertEquality list.Tail ["pear"; "grape"; "peach"]
+        AssertEquality list.Length 4
 
         (* .NET developers coming from other languages may be surprised
            that F#'s list type is not the same as the base class library's
