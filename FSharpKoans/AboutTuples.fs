@@ -14,7 +14,7 @@ module ``about tuples`` =
     let CreatingTuples() =
         let items = ("apple", "dog")
         
-        AssertEquality items ("apple", __)
+        AssertEquality items ("apple", "dog")
         
     [<Koan>]
     let AccessingTupleElements() =
@@ -23,8 +23,8 @@ module ``about tuples`` =
         let fruit = fst items
         let animal = snd items
         
-        AssertEquality fruit __
-        AssertEquality animal __
+        AssertEquality fruit "apple"
+        AssertEquality animal "dog"
 
     [<Koan>]
     let AccessingTupleElementsWithPatternMatching() =
