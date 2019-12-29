@@ -111,7 +111,7 @@ module ``about lists`` =
         let result = List.filter isEven original
 
         AssertEquality original [0; 1; 2; 3; 4; 5]
-        AssertEquality result [0; 2; 4]
+        AssertEquality result [ 0; 2; 4 ]
 
     [<Koan>]
     let DividingListsWithPartition() =

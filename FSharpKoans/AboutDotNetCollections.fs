@@ -19,8 +19,8 @@ module ``about dot net collections`` =
         fruits.Add("apple")
         fruits.Add("pear")
  
-        AssertEquality fruits.[0] __
-        AssertEquality fruits.[1] __
+        AssertEquality fruits.[0] "apple"
+        AssertEquality fruits.[1] "pear"
 
     [<Koan>]
     let CreatingDotNetDictionaries() =
@@ -29,8 +29,8 @@ module ``about dot net collections`` =
         addressBook.["Chris"] <- "Ann Arbor"
         addressBook.["SkillsMatter"] <- "London"
 
-        AssertEquality addressBook.["Chris"] __
-        AssertEquality addressBook.["SkillsMatter"] __
+        AssertEquality addressBook.["Chris"] "Ann Arbor"
+        AssertEquality addressBook.["SkillsMatter"] "London"
 
     [<Koan>]
     let YouUseCombinatorsWithDotNetTypes() =
@@ -49,15 +49,16 @@ module ``about dot net collections`` =
         //      that you can combine to perform operations on types implementing 
         //      seq/IEnumerable.
 
-        AssertEquality verboseBook.[0] __
-        AssertEquality verboseBook.[1] __
+        AssertEquality verboseBook.[0] "Name: Chris - City: Ann Arbor"
+        AssertEquality verboseBook.[1] "Name: SkillsMatter - City: London"
 
     [<Koan>]
     let SkippingElements() =
         let original = [0..5]
         let result = Seq.skip 2 original
-        
-        AssertEquality result __
+        let assumedResult = [ 2..5 ] :> seq<int>
+
+        AssertEquality result assumedResult
 
     [<Koan>]
     let FindingTheMax() =
@@ -71,14 +72,11 @@ module ``about dot net collections`` =
 
         let result = Seq.max values
         
-        AssertEquality result __
+        AssertEquality result 20
     
     [<Koan>]
     let FindingTheMaxUsingACondition() =
-        let getNameLength (name:string) =
-            name.Length
-        
         let names = [| "Harry"; "Lloyd"; "Nicholas"; "Mary"; "Joe"; |]
-        let result = Seq.maxBy getNameLength names 
+        let result = Seq.maxBy (fun (name : string) -> name.Length) names 
         
-        AssertEquality result __
+        AssertEquality result "Nicholas"
